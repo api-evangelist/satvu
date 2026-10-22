@@ -1,0 +1,16 @@
+generated: '2026-10-21'
+method: none
+source:
+- https://zapier.com/apps/satvu/integrations
+- https://n8n.io/integrations/satvu/
+- https://composio.dev/toolkits/satvu
+- https://monid.ai/tools/satvu
+checked:
+- https://composio.dev/toolkits/satvu
+- https://monid.ai/tools/satvu
+- https://n8n.io/integrations/satvu/
+- https://zapier.com/apps/satvu/integrations
+summary: null
+marketplace_apps: []
+edges: []
+templates: []

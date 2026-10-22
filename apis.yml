@@ -1,25 +1,117 @@
 aid: satvu
+
 name: SatVu
-description: 'SatVu is a company surfaced via the API Evangelist harvest backlog (source: vc-portfolio;
-  backed by adaraventurepartners) and added to the network as a stub for full-pipeline profiling.'
+
+image: https://cdn.prod.website-files.com/664e1cfdaf0f190ac9bb6e1e/66ec4c58732e9d9d26af1114_SatVu-Open-Graph-Image.png
+
+description: SatVu supplies high‑resolution (up to 3.5 m) thermal infrared imagery captured from its satellite constellation. The data can be
+  delivered as still images or video up to 60 seconds and is marketed for use in national security, economic monitoring and climate‑resilience
+  applications, including urban heat monitoring and activity detection inside structures day or night.
+
 url: https://raw.githubusercontent.com/api-evangelist/satvu/refs/heads/main/apis.yml
+
 x-type: company
+
 x-source: harvest:vc-portfolio
-x-tier: stub
-x-tier-reason: harvest
+
+x-tier: profiled
+x-tier-reason: enrichment pass 2026-10-21 (modular-v1; was harvest)
+
 specificationVersion: '0.20'
+
 created: '2026-10-21'
+
 modified: '2026-10-21'
+
 tags:
-- Company
-apis: []
+- Thermal imagery
+- Satellite data
+- National security
+- Economic monitoring
+- Climate resilience
+
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
-x-backed-by:
-- adaraventurepartners
+
 common:
+- type: Spectral
+  url: rules/satvu-rules.yml
+- type: JSONLD
+  url: json-ld/satvu-context.jsonld
+- type: Vocabulary
+  url: vocabulary/satvu-vocabulary.yml
+- type: Webhooks
+  url: asyncapi/satvu-webhooks.yml
+- type: DataModel
+  url: data-model/satvu-data-model.yml
+- type: Conformance
+  url: conformance/satvu-conformance.yml
+- type: Hosts
+  url: hosts/satvu-hosts.yml
+- type: Vendors
+  url: vendors/satvu-vendors.yml
+- type: SDKs
+  url: packages/satvu-packages.yml
+- type: Packages
+  url: packages/satvu-packages.yml
+- type: PrivacyPolicy
+  url: https://www.satellitevu.com/privacy-policy
+- type: Newsroom
+  url: https://www.satellitevu.com/insights/press
+- type: Blog
+  url: https://www.satellitevu.com/insights/blog
+- type: GettingStarted
+  url: https://docs.satellitevu.com/developers/getting-started
+- type: APIReference
+  url: https://api-docs.satellitevu.com/
+- type: GitHubOrganization
+  url: https://github.com/SatelliteVu
+- type: DomainSecurity
+  url: security/satvu-domain-security.yml
 - type: Website
   url: https://www.satellitevu.com
+
+apis:
+- aid: satvu:satvu-api
+  name: SatVu API
+  description: 'SatVu API as documented publicly: 42 operations. Contract generated from the documentation by API Evangelist (2026-10-21); not
+    the provider''s own document.'
+  humanURL: https://docs.satellitevu.com/developers/api/catalog
+  baseURL: https://api.satellitevu.com
+  properties:
+  - type: OpenAPI
+    url: openapi/_ae-authored/satvu-openapi-generated.yml
+    x-provenance: generated
+  - type: JSONSchema
+    url: json-schema/satvu-post-otm-v2-contract-id-tasking-feasibilities-response-schema.json
+  - type: JSONSchema
+    url: json-schema/satvu-post-otm-v2-contract-id-tasking-series-price-request-schema.json
+  - type: JSONSchema
+    url: json-schema/satvu-post-otm-v2-contract-id-tasking-series-request-schema.json
+  - type: JSONSchema
+    url: json-schema/satvu-post-contractid-tasking-series-response-schema.json
+  - type: JSONSchema
+    url: json-schema/satvu-post-otm-v2-contract-id-tasking-orders-request-schema.json
+  - type: JSONSchema
+    url: json-schema/satvu-post-policy-v1-contracts-response-schema.json
+
+x-backed-by:
+- adaraventurepartners
+
+x-coverage:
+  state: unreadable
+  reason: no-machine-readable-spec
+  detail: The website provides only static HTML with no machine‑readable API specifications.
+  evidence:
+  - url: https://www.satellitevu.com
+    status: 200
+  checked: '2026-10-21'
+x-enrichment:
+  date: '2026-10-21'
+  status: enriched
+  artifacts_added: 22
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

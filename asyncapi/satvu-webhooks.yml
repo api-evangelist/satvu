@@ -1,0 +1,30 @@
+generated: '2026-10-21'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.satellitevu.com/developers/api-reference/id/create-webhook/
+sources:
+- https://docs.satellitevu.com/developers/api-reference/id/create-webhook/
+description: SatVu provides webhook topics for various events.
+events:
+- event: Tasking Order Fulfilled V3
+  description: Webhook triggered when a tasking order is fulfilled (version 3).
+- event: Tasking Order Expired V2
+  description: Webhook triggered when a tasking order expires (version 2).
+- event: Company Kyc Status Update V0
+  description: Webhook triggered when a company's KYC status is updated (version 0).
+- event: End User Kyc Status Update V0
+  description: Webhook triggered when an end‑user's KYC status is updated (version 0).
+- event: Tasking Order Fulfilled V2
+  description: Webhook triggered when a tasking order is fulfilled (version 2).
+- event: User Catalog Order API
+  description: Webhook related to user catalog order events.
+- event: Tasking API
+  description: Webhook related to tasking API events.
+- event: Policy API
+  description: Webhook related to policy API events.
+- event: Reseller API
+  description: Webhook related to reseller API events.
+- event: Wallet API
+  description: Webhook related to wallet API events.
+delivery: {}
+docs: https://docs.satellitevu.com/developers/api-reference/id/create-webhook/

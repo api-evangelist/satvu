@@ -1,0 +1,110 @@
+generated: '2026-10-21'
+method: derived
+source: the pre-flight dossier, apis.yml pointers, spec servers, well-known, vendors -- nothing fetched here
+generator: derive-hosts.py
+summary:
+  hosts: 6
+  own: 5
+  other_domain: 0
+  platform: 1
+  roles:
+  - api
+  - docs
+  - other
+  - source
+  - website
+hosts:
+- host: api-docs.satellitevu.com
+  found_by:
+  - pointer
+  - probed
+  - site-links
+  - docs-index
+  - spec-found
+  - contract-discovery
+  - well-known
+  types:
+  - APIReference
+  serves:
+  - docs
+  - spec
+  registrable_domain: satellitevu.com
+  role: docs
+  relation: own
+- host: api.satellitevu.com
+  found_by:
+  - apis[]
+  - probed
+  - site-links
+  - namespace-probe
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types: []
+  serves:
+  - api
+  - api-gateway
+  - cdn
+  title: Getting Started | SatVu Docs
+  status: 200
+  vendor: aws-api-gateway
+  registrable_domain: satellitevu.com
+  role: api
+  relation: own
+- host: app.satellitevu.com
+  found_by:
+  - probed
+  - site-links
+  - contract-discovery
+  - well-known
+  types: []
+  serves: []
+  registrable_domain: satellitevu.com
+  role: other
+  relation: own
+- host: docs.satellitevu.com
+  found_by:
+  - pointer
+  - apis[]
+  - probed
+  - site-links
+  - namespace-probe
+  - docs-index
+  - contract-discovery
+  - well-known
+  types:
+  - GettingStarted
+  serves:
+  - docs
+  title: Getting Started | SatVu Docs
+  status: 200
+  registrable_domain: satellitevu.com
+  role: docs
+  relation: own
+- host: github.com
+  found_by:
+  - pointer
+  types:
+  - GitHubOrganization
+  serves: []
+  registrable_domain: github.com
+  role: source
+  relation: platform
+- host: www.satellitevu.com
+  found_by:
+  - pointer
+  - probed
+  - contract-discovery
+  - well-known
+  - vendor-detect
+  types:
+  - PrivacyPolicy
+  - Newsroom
+  - Blog
+  - Website
+  serves:
+  - cdn
+  vendor: cloudflare
+  registrable_domain: satellitevu.com
+  role: website
+  relation: own

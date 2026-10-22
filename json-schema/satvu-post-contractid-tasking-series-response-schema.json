@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/satvu/main/json-schema/satvu-post-contractid-tasking-series-response-schema.json",
+  "title": "PostContractidTaskingSeriesResponse",
+  "x-generated": "2026-10-21",
+  "x-method": "derived",
+  "x-generator": "derive-json-schema.py",
+  "x-source": "openapi/_ae-authored/satvu-openapi-generated.yml#/components/schemas/PostContractidTaskingSeriesResponse",
+  "type": "object",
+  "properties": {
+    "201": {
+      "type": "string",
+      "description": "Successful Response"
+    },
+    "400": {
+      "type": "string",
+      "description": "Malformed request body"
+    },
+    "402": {
+      "type": "string",
+      "description": "Insufficient credit available to make a reservation"
+    },
+    "403": {
+      "type": "string",
+      "description": "Breach of contract terms and conditions / Reseller end user error"
+    },
+    "422": {
+      "type": "string",
+      "description": "Validation error (invalid request body) or invalid withhold/licence level option"
+    },
+    "500": {
+      "type": "string",
+      "description": "Internal server error"
+    },
+    "503": {
+      "type": "string",
+      "description": "Ordering temporarily unavailable"
+    }
+  }
+}

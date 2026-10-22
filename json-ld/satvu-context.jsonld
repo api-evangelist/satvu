@@ -1,0 +1,144 @@
+{
+  "@context": {
+    "@vocab": "https://satellitevu.com/schema#",
+    "schema": "https://schema.org/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "dcterms": "http://purl.org/dc/terms/",
+    "satvu": "https://satellitevu.com/schema#",
+    "PostContractidResponse": "satvu:PostContractidResponse",
+    "PatchContractidOrderidResponse": "satvu:PatchContractidOrderidResponse",
+    "GetContractidTaskingOrdersResponse": "satvu:GetContractidTaskingOrdersResponse",
+    "PostContractidTaskingPriceResponse": "satvu:PostContractidTaskingPriceResponse",
+    "PostContractidTaskingSeriesResponse": "satvu:PostContractidTaskingSeriesResponse",
+    "PostCatalogV1ContractIdSearchRequest": "satvu:PostCatalogV1ContractIdSearchRequest",
+    "collections": {
+      "@id": "satvu:collections",
+      "@container": "@list"
+    },
+    "intersects": {
+      "@id": "satvu:intersects"
+    },
+    "PostCatalogV3ContractIdSearchRequest": "satvu:PostCatalogV3ContractIdSearchRequest",
+    "datetime": {
+      "@id": "satvu:datetime",
+      "@type": "xsd:dateTime"
+    },
+    "limit": {
+      "@id": "satvu:limit",
+      "@type": "xsd:integer"
+    },
+    "PostOauthTokenRequest": "satvu:PostOauthTokenRequest",
+    "type": {
+      "@id": "satvu:type",
+      "@type": "xsd:string"
+    },
+    "geometry": {
+      "@id": "satvu:geometry"
+    },
+    "properties": {
+      "@id": "satvu:properties"
+    },
+    "PostOrdersV3ContractIdRequest": "satvu:PostOrdersV3ContractIdRequest",
+    "item_id": {
+      "@id": "satvu:item_id",
+      "@container": "@list"
+    },
+    "licence_level": {
+      "@id": "satvu:licence_level",
+      "@type": "xsd:string"
+    },
+    "name": {
+      "@id": "satvu:name",
+      "@type": "xsd:string"
+    },
+    "GetOrdersV3ContractIdOrderIdItemIdDownloadResponse": "satvu:GetOrdersV3ContractIdOrderIdItemIdDownloadResponse",
+    "download_url": {
+      "@id": "satvu:download_url",
+      "@type": "xsd:string"
+    },
+    "GetOrdersV3ContractIdOrderIdDownloadResponse": "satvu:GetOrdersV3ContractIdOrderIdDownloadResponse",
+    "PostOrdersV3ContractIdPriceRequest": "satvu:PostOrdersV3ContractIdPriceRequest",
+    "PostOtmV2ContractIdSearchRequest": "satvu:PostOtmV2ContractIdSearchRequest",
+    "PostOtmV2ContractIdTaskingFeasibilitiesRequest": "satvu:PostOtmV2ContractIdTaskingFeasibilitiesRequest",
+    "PostOtmV2ContractIdTaskingFeasibilitiesResponse": "satvu:PostOtmV2ContractIdTaskingFeasibilitiesResponse",
+    "features": {
+      "@id": "satvu:features",
+      "@container": "@list"
+    },
+    "id": {
+      "@id": "satvu:id",
+      "@type": "xsd:string"
+    },
+    "links": {
+      "@id": "satvu:links",
+      "@container": "@list"
+    },
+    "status": {
+      "@id": "satvu:status",
+      "@type": "xsd:string"
+    },
+    "contract_id": {
+      "@id": "satvu:contract_id",
+      "@type": "xsd:string"
+    },
+    "GetOtmV2ContractIdTaskingFeasibilitiesFeasibilityIdResponseR": "satvu:GetOtmV2ContractIdTaskingFeasibilitiesFeasibilityIdResponseR",
+    "PostOtmV2ContractIdTaskingOrdersRequest": "satvu:PostOtmV2ContractIdTaskingOrdersRequest",
+    "PostOtmV2ContractIdTaskingOrdersOrderIdCancelRequest": "satvu:PostOtmV2ContractIdTaskingOrdersOrderIdCancelRequest",
+    "total_order_count": {
+      "@id": "satvu:total_order_count",
+      "@type": "xsd:integer"
+    },
+    "GetOtmV2ContractIdTaskingOrdersOrderIdTasksResponse": "satvu:GetOtmV2ContractIdTaskingOrdersOrderIdTasksResponse",
+    "order_id": {
+      "@id": "satvu:order_id",
+      "@type": "xsd:string"
+    },
+    "tasks": {
+      "@id": "satvu:tasks",
+      "@container": "@list"
+    },
+    "PostOtmV2ContractIdTaskingPriceRequest": "satvu:PostOtmV2ContractIdTaskingPriceRequest",
+    "PostOtmV2ContractIdTaskingSeriesRequest": "satvu:PostOtmV2ContractIdTaskingSeriesRequest",
+    "PostOtmV2ContractIdTaskingSeriesPriceRequest": "satvu:PostOtmV2ContractIdTaskingSeriesPriceRequest",
+    "PostPolicyV1ContractsRequest": "satvu:PostPolicyV1ContractsRequest",
+    "token": {
+      "@id": "satvu:token",
+      "@type": "xsd:string"
+    },
+    "PostPolicyV1ContractsResponse": "satvu:PostPolicyV1ContractsResponse",
+    "active": {
+      "@id": "satvu:active",
+      "@type": "xsd:boolean"
+    },
+    "addons": {
+      "@id": "satvu:addons",
+      "@container": "@list"
+    },
+    "allowed_geographical_area": {
+      "@id": "satvu:allowed_geographical_area"
+    },
+    "end_date": {
+      "@id": "satvu:end_date",
+      "@type": "xsd:date"
+    },
+    "geographical_summary": {
+      "@id": "satvu:geographical_summary",
+      "@type": "xsd:string"
+    },
+    "products": {
+      "@id": "satvu:products",
+      "@container": "@list"
+    },
+    "start_date": {
+      "@id": "satvu:start_date",
+      "@type": "xsd:date"
+    }
+  },
+  "@type": "schema:Dataset",
+  "schema:name": "SatVu API JSON-LD context",
+  "schema:description": "A JSON-LD @context for the objects SatVu's own API contract declares: one class per component schema, one property per declared field, typed from the contract. Derived by script (derive-json-ld.py, 2026-10-21) from openapi/_ae-authored/satvu-openapi-generated.yml.",
+  "dcterms:created": "2026-10-21",
+  "dcterms:source": [
+    "openapi/_ae-authored/satvu-openapi-generated.yml"
+  ]
+}

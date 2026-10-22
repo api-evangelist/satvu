@@ -1,0 +1,1670 @@
+openapi: 3.1.0
+info:
+  title: SatVu API
+  version: '2026-10-21'
+  description: 'GENERATED FROM DOCUMENTATION by API Evangelist on 2026-10-21: 42 operation(s) read from 30 public documentation page(s) (each
+    operation names its page in x-source). This is not the provider''s published contract; SatVu has published no machine-readable contract that
+    the pipeline could find. Engine: local.'
+  x-evidence-tiers:
+    code-example: 19
+    documentation: 23
+    pages-with-code: 8
+    pages-read: 30
+  x-generated-from: documentation
+  x-provenance: generated
+  x-authored-by: API Evangelist
+  x-generated: '2026-10-21'
+  x-generator: generate-contract-from-docs.py
+  x-engine: local
+  x-sources:
+  - https://docs.satellitevu.com/developers/api/catalog
+  - https://docs.satellitevu.com/developers/api/overview
+  - https://docs.satellitevu.com/developers/api/assured-tasking
+  - https://docs.satellitevu.com/developers/api/standard-tasking
+  - https://docs.satellitevu.com/developers/api/recurring-tasking
+  - https://docs.satellitevu.com/developers/api/contract-information
+  - https://docs.satellitevu.com/developers/api/catalog-advanced-querying
+  - https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+  - https://docs.satellitevu.com/developers/api-reference/otm/search
+  - https://docs.satellitevu.com/developers/api-reference/otm/list-orders
+  - https://docs.satellitevu.com/developers/api-reference/catalog/get-item
+  - https://docs.satellitevu.com/developers/api-reference/orders/get-order
+  - https://docs.satellitevu.com/developers/api-reference/id/create-webhook
+  - https://docs.satellitevu.com/developers/api-reference/orders/edit-order
+  - https://docs.satellitevu.com/developers/api-reference/otm/create-series
+  - https://docs.satellitevu.com/developers/api-reference/id/get-user-client
+  - https://docs.satellitevu.com/developers/api-reference/catalog/search-json
+  - https://docs.satellitevu.com/developers/api-reference/catalog/search-text
+  - https://docs.satellitevu.com/developers/api-reference/orders/query-orders
+  - https://docs.satellitevu.com/developers/api-reference/orders/submit-order
+  - https://docs.satellitevu.com/developers/api-reference/otm/calculate-price
+  - https://docs.satellitevu.com/developers/api-reference/catalog/landing-page
+  - https://docs.satellitevu.com/developers/api-reference/orders/search-orders
+  - https://docs.satellitevu.com/developers/api-reference/otm/list-order-tasks
+  - https://docs.satellitevu.com/developers/api-reference/id/edit-user-settings
+  - https://docs.satellitevu.com/developers/api-reference/orders/download-order
+  - https://docs.satellitevu.com/developers/api-reference/catalog/get-collection
+  - https://docs.satellitevu.com/developers/api-reference/orders/calculate-price
+  - https://docs.satellitevu.com/developers/api-reference/catalog/list-queryables
+  - https://docs.satellitevu.com/developers/api-reference/catalog/list-collections
+servers:
+- url: https://api.satellitevu.com
+paths:
+  /{contractId}/:
+    get:
+      operationId: get_contractId
+      tags:
+      - Api
+      summary: Retrieve all existing orders for the contract.
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/query-orders
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+    post:
+      operationId: post_contractId
+      tags:
+      - Api
+      summary: Create and submit a new imagery order of one or more items (maximum 100)
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/submit-order
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostContractidResponse'
+      x-evidence:
+        kind: documentation
+  /{contractId}/{orderId}:
+    get:
+      operationId: get_contractId_orderId
+      tags:
+      - Api
+      summary: Retrieve order details for a specified Order ID in the contract.
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/get-order
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+    patch:
+      operationId: patch_contractId_orderId
+      tags:
+      - Api
+      summary: Edit the name of an order owned by the authenticated user.
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/edit-order
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PatchContractidOrderidResponse'
+      x-evidence:
+        kind: documentation
+  /{contractId}/{orderId}/download:
+    get:
+      operationId: get_contractId_orderId_download
+      tags:
+      - Download
+      summary: Download all the items for a specified imagery order owned by the authenticated user.
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/download-order
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: redirect
+        in: query
+        required: false
+        schema:
+          type: string
+        description: If true, the image content is downloaded locally; if false, a presigned download URL is returned.
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /{contractId}/price:
+    post:
+      operationId: post_contractId_price
+      tags:
+      - Price
+      summary: Calculate order price based on items and licence level.
+      description: Returns base price (items × unit price) when baseprice is True, or full price including licence uplift when baseprice is False.
+        Handles both regular and reseller order formats.
+      x-source: https://docs.satellitevu.com/developers/api-reference/orders/calculate-price
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /{contractId}/tasking/orders:
+    get:
+      operationId: get_contractId_tasking_orders
+      tags:
+      - Tasking
+      summary: List all tasking orders.
+      x-source: https://docs.satellitevu.com/developers/api-reference/otm/list-orders
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetContractidTaskingOrdersResponse'
+      x-evidence:
+        kind: documentation
+  /{contractId}/tasking/orders/{orderId}/tasks:
+    get:
+      operationId: get_contractId_tasking_orders_orderId_tasks
+      tags:
+      - Tasking
+      summary: List all tasks for a tasking order.
+      description: Returns a list of tasks for an order, sorted by creation date (newest first). Includes status history and acquisition metadata
+        for each task.
+      x-source: https://docs.satellitevu.com/developers/api-reference/otm/list-order-tasks
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: orderId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /{contractId}/tasking/price/:
+    post:
+      operationId: post_contractId_tasking_price
+      tags:
+      - Tasking
+      summary: Get price for a set of ordering parameters.
+      x-source: https://docs.satellitevu.com/developers/api-reference/otm/calculate-price
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostContractidTaskingPriceResponse'
+      x-evidence:
+        kind: documentation
+  /{contractId}/tasking/series/:
+    post:
+      operationId: post_contractId_tasking_series
+      tags:
+      - Tasking
+      summary: Create a recurring tasking series.
+      x-source: https://docs.satellitevu.com/developers/api-reference/otm/create-series
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostContractidTaskingSeriesResponse'
+      x-evidence:
+        kind: documentation
+  /catalog/v1/${CONTRACT_ID}/search:
+    post:
+      operationId: post_catalog_v1_CONTRACT_ID_search
+      tags:
+      - Catalog
+      summary: POST /catalog/v1/${CONTRACT_ID}/search
+      x-source: https://docs.satellitevu.com/developers/api/catalog-advanced-querying
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCatalogV1ContractIdSearchRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/catalog/v1/${CONTRACT_ID}/search/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+          -H "Content-Type: application/json" \ -d ''{ "collections": ["acquisition"], "intersects": { "type": "Polygon", "coordinates": [ [ [
+          -6.327503392573107, 61.6683280553836 ], [ -10.397971713272113, 35.326504973149014 ], [ 33.47533491237101, 43.802022041567994 ], [ -6.32750339257'
+  /catalog/v3/${CONTRACT_ID}/search:
+    post:
+      operationId: post_catalog_v3_CONTRACT_ID_search
+      tags:
+      - Catalog
+      summary: POST /catalog/v3/${CONTRACT_ID}/search
+      x-source: https://docs.satellitevu.com/developers/api/catalog
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostCatalogV3ContractIdSearchRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/catalog/v3/${CONTRACT_ID}/search/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}" \
+          -H "Content-Type: application/json" \ -d ''{ "datetime": "2023-06-01T00:00:00.000Z/2023-12-31T00:00:00.000Z", "collections": ["acquisition"],
+          "intersects": { "coordinates": [ [ [ 12.512915276, 41.919453536 ], [ 12.456270738, 41.913126082 ], [ 12.463075077, 41.8793154 ], [ 12.5'
+  /oauth/token:
+    post:
+      operationId: post_oauth_token
+      tags:
+      - Oauth
+      summary: POST /oauth/token
+      x-source: https://docs.satellitevu.com/developers/api/overview
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOauthTokenRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST https://auth.satellitevu.com/oauth/token \\ -H \"Content-Type: application/x-www-form-urlencoded\" \\ -d \"grant_type=client_credentials\"\
+          \ \\ -d \"audience=https://api.satellitevu.com/\" \\ -u ${CLIENT_ID}:${CLIENT_SECRET} \n tip We recommend you implement the required\
+          \ OAuth2 client credential workflow to better handle authentication, so that you\ndon’t need to create a new token for every reques"
+  /orders/v3/${CONTRACT_ID}:
+    post:
+      operationId: post_orders_v3_CONTRACT_ID
+      tags:
+      - Orders
+      summary: POST /orders/v3/${CONTRACT_ID}
+      x-source: https://docs.satellitevu.com/developers/api/catalog
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrdersV3ContractIdRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/orders/v3/${CONTRACT_ID}/\" \\ -H \"Authorization: Bearer ${ACCESS_TOKEN}\" \\ -H\
+          \ \"Content-Type: application/json\" \\ -d '{ \"item_id\": [\"<id>\", \"<id>\", \"<id>\"], \"licence_level\" : \"Evaluation Licence\"\
+          , \"name\" : \"<Order Name>\" }' \n The response of that request includes the order ID ( id ) and the information about every single\
+          \ item you requested,\nincluding their u"
+  /orders/v3/${CONTRACT_ID}/${ORDER_ID}/${ITEM_ID}/download:
+    get:
+      operationId: get_orders_v3_CONTRACT_ID_ORDER_ID_ITEM_ID_download
+      tags:
+      - Orders
+      summary: Download data
+      x-source: https://docs.satellitevu.com/developers/api/catalog
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ITEM_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer access token
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrdersV3ContractIdOrderIdItemIdDownloadResponse'
+      x-evidence:
+        kind: documentation
+  /orders/v3/${CONTRACT_ID}/${ORDER_ID}/download:
+    get:
+      operationId: get_orders_v3_CONTRACT_ID_ORDER_ID_download
+      tags:
+      - Orders
+      summary: Download data
+      x-source: https://docs.satellitevu.com/developers/api/catalog
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer access token
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOrdersV3ContractIdOrderIdDownloadResponse'
+      x-evidence:
+        kind: documentation
+  /orders/v3/${CONTRACT_ID}/price:
+    post:
+      operationId: post_orders_v3_CONTRACT_ID_price
+      tags:
+      - Orders
+      summary: POST /orders/v3/${CONTRACT_ID}/price
+      x-source: https://docs.satellitevu.com/developers/api/catalog
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOrdersV3ContractIdPriceRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/orders/v3/${CONTRACT_ID}/price\" \\ -H \"Authorization: Bearer ${ACCESS_TOKEN}\"\
+          \ \\ -H \"Content-Type: application/json\" \\ -d '{ \"item_id\": [\"<id>\", \"<id>\", \"<id>\"], \"licence_level\" : \"Evaluation Licence\"\
+          \ }' \n note Please note that you don’t need to wait for data to be prepared - once the order is placed, you can access the data\nimmediately.\
+          \ \n Download data ​ \n "
+  /otm/v2/${CONTRACT_ID}/search:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_search
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/search
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdSearchRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/search/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}" \ -H "Content-Type:
+          application/json" \ -d ''{ "collections": [ "orders" ], "intersects": { "coordinates": [ [ [ -8.60621344099522, 60.63920763634644 ],
+          [ -14.213293594801314, 45.95851155946286 ], [ 10.621928171802324, 52.72769978027327 ], [ -8.60621344099522, 60.63920763634644 ] ] '
+  /otm/v2/${CONTRACT_ID}/tasking/feasibilities:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_feasibilities
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/feasibilities
+      x-source: https://docs.satellitevu.com/developers/api/assured-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingFeasibilitiesRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostOtmV2ContractIdTaskingFeasibilitiesResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/feasibilities/\" \\ -H \"Authorization: Bearer ${ACCESS_TOKEN}\"\
+          \ \\ -H \"Content-Type: application/json\" \\ -d '{ \"type\": \"Feature\", \"geometry\": { \"coordinates\": [ -26.213044, 67.63173 ],\
+          \ \"type\": \"Point\" }, \"properties\": { \"datetime\": \"2026-10-01T00:00:00/2026-10-01T23:59:59\", \"product\": \"assured\" } }'\
+          \ \n note Please note that the fea"
+  /otm/v2/${CONTRACT_ID}/tasking/feasibilities/${FEASIBILITY_ID}:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_feasibilities_FEASIBILITY_ID
+      tags:
+      - Otm
+      summary: Check feasibility request status
+      description: Retrieve the status and details of a specific feasibility request.
+      x-source: https://docs.satellitevu.com/developers/api/standard-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: FEASIBILITY_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/feasibilities/${FEASIBILITY_ID}/response:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_feasibilities_FEASIBILITY_ID_response
+      tags:
+      - Otm
+      summary: Check the status of the request
+      description: Retrieves the feasibility response containing available passes and related metadata.
+      x-source: https://docs.satellitevu.com/developers/api/assured-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: FEASIBILITY_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+        schema:
+          type: string
+        description: Bearer token
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOtmV2ContractIdTaskingFeasibilitiesFeasibilityIdResponseR'
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/orders:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_orders
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/orders
+      x-source: https://docs.satellitevu.com/developers/api/standard-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingOrdersRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/orders/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}"
+          \ -H "Content-Type: application/json" \ -d ''{ "type": "Feature", "geometry": { "coordinates": [ -2.7783632, 53.3240764 ], "type": "Point"
+          }, "properties": { "datetime": "2023-11-01T00:00:00/2023-12-31T23:59:59", "satvu:day_night_mode": "day", "max_cloud_cover": 30, "min_off'
+  /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_orders_ORDER_ID
+      tags:
+      - Otm
+      summary: GET /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X GET \"https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}\" \\ -H \"Authorization: Bearer ${ACCESS_TOKEN}\"\
+          \ \n The response returns a Feature, which also includes the current status of the Order along with a full breakdown of the\nstatus\
+          \ history in the status_history field \n { \"type\" : \"Feature\" , \"geometry\" : { \"bbox\" : [ ... ] , \"type\" : \"Point\" , \"\
+          coordinates\" : [ ... "
+    patch:
+      operationId: patch_otm_v2_CONTRACT_ID_tasking_orders_ORDER_ID
+      tags:
+      - Otm
+      summary: PATCH /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X PATCH "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}"
+          \ -H "Content-Type: application/json" \ -d ''{ "geometry": { "type": "Point", "coordinates": [..,..] }, "properties": { "licence_level":
+          "My Licence", "addon:withhold": "PT0H", "name": "My Order", "start_time": "2026-01-01T00:00:00+00:00", "end_time": "2026-01-3'
+  /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/cancel:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_orders_ORDER_ID_cancel
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/cancel
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingOrdersOrderIdCancelRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/cancel\" \\ -H \"Authorization:\
+          \ Bearer ${ACCESS_TOKEN}\" \n Managing a recurring series ​ \n For recurring order series, modifications and cancellations apply to\
+          \ future child orders only — any orders that have\nalready been created within the series are not affected. For information on creating\
+          \ a recurring series, "
+  /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/download:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_orders_ORDER_ID_download
+      tags:
+      - Otm
+      summary: GET /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/download
+      x-source: https://docs.satellitevu.com/developers/api/assured-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X GET "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/download" \ -H "Authorization: Bearer
+          ${ACCESS_TOKEN}" Previous Recurring Series Tasking Tutorial Next Track and Manage Tasking Orders Exploring available passes Price estimation
+          Placing a tasking order Data download Company SatVu Website Copyright 2026 SatVu. Built with Docusaurus.'
+  /otm/v2/${CONTRACT_ID}/tasking/orders/${ORDER_ID}/tasks:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_orders_ORDER_ID_tasks
+      tags:
+      - Otm
+      summary: View individual tasks assigned to an order
+      description: Provides a list of all tasks that have been assigned to the specified order, including each task's status and history.
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: ORDER_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GetOtmV2ContractIdTaskingOrdersOrderIdTasksResponse'
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/price:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_price
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/price
+      x-source: https://docs.satellitevu.com/developers/api/assured-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingPriceRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/price/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}"
+          \ -H "Content-Type: application/json" \ -d ''{ "type": "Feature", "geometry": { "coordinates": [ -26.213044, 67.63173 ], "type": "Point"
+          }, "properties": { "datetime": "2026-10-02T00:00:00/2026-10-02T23:59:59", "product": "assured", "licence_level" : "Evaluation Licence",
+          "ad'
+  /otm/v2/${CONTRACT_ID}/tasking/series:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_series
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/series
+      x-source: https://docs.satellitevu.com/developers/api/recurring-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingSeriesRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/series/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}"
+          \ -H "Content-Type: application/json" \ -d ''{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [-2.2374, 53.4808] },
+          "properties": { "name": "Monthly monitoring - Manchester", "frequency": "P1M", "start_date": "2026-08-01T00:00:00Z", "total_order_count":
+          6, '
+  /otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_series_SERIES_ID
+      tags:
+      - Otm
+      summary: Retrieve a single series
+      x-source: https://docs.satellitevu.com/developers/api/recurring-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: SERIES_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}/cancel:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_series_SERIES_ID_cancel
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}/cancel
+      x-source: https://docs.satellitevu.com/developers/api/track-and-manage-tasking-orders
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: SERIES_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}/cancel\" \\ -H \"Authorization:\
+          \ Bearer ${ACCESS_TOKEN}\" \n A successful cancellation returns a 204 response with no body. Any reserved credit for unfulfilled future\
+          \ orders is\nreturned to your credit limit. Orders that have already been fulfilled are not affected. Previous Assured Tasking tutorial\
+          \ Next Overview "
+  /otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}/download:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_series_SERIES_ID_download
+      tags:
+      - Otm
+      summary: Download all available orders within a series
+      x-source: https://docs.satellitevu.com/developers/api/recurring-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: SERIES_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/series/${SERIES_ID}/orders/:
+    get:
+      operationId: get_otm_v2_CONTRACT_ID_tasking_series_SERIES_ID_orders
+      tags:
+      - Otm
+      summary: Listing orders within a series
+      x-source: https://docs.satellitevu.com/developers/api/recurring-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: SERIES_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /otm/v2/${CONTRACT_ID}/tasking/series/price:
+    post:
+      operationId: post_otm_v2_CONTRACT_ID_tasking_series_price
+      tags:
+      - Otm
+      summary: POST /otm/v2/${CONTRACT_ID}/tasking/series/price
+      x-source: https://docs.satellitevu.com/developers/api/recurring-tasking
+      parameters:
+      - name: CONTRACT_ID
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostOtmV2ContractIdTaskingSeriesPriceRequest'
+      responses:
+        '201':
+          description: Success (status as documented)
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: 'curl -X POST "https://api.satellitevu.com/otm/v2/${CONTRACT_ID}/tasking/series/price/" \ -H "Authorization: Bearer ${ACCESS_TOKEN}"
+          \ -H "Content-Type: application/json" \ -d ''{ "type": "Feature", "geometry": { "type": "Point", "coordinates": [-2.2374, 53.4808] },
+          "properties": { "name": "Monthly monitoring - Manchester", "frequency": "P1M", "start_date": "2026-08-01T00:00:00Z", "total_order_count'
+  /policy/v1/contracts:
+    post:
+      operationId: post_policy_v1_contracts
+      tags:
+      - Policy
+      summary: POST /policy/v1/contracts
+      x-source: https://docs.satellitevu.com/developers/api/contract-information
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PostPolicyV1ContractsRequest'
+      responses:
+        '201':
+          description: Success (shape read from the example response on the page)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PostPolicyV1ContractsResponse'
+      x-evidence:
+        kind: code-example
+        language: curl
+        snippet: "curl -X POST \"https://api.satellitevu.com/policy/v1/contracts/\" \\ -H \"Content-Type: application/json\" \\ -d '{ \"token\"\
+          : \"<Access Token>\" }' \n The example response is the following: \n [ { \"active\" : true , \"addons\" : [ ... ] , \"allowed_geographical_area\"\
+          \ : { ... } , \"contract_id\" : \"375158d5-a768-44e3-9506-0f6af8833d16\" , \"end_date\" : \"2025-12-31\" , \"geographical_summary\"\
+          \ : \"...\" , \"name\" : \"Your co"
+  /user/settings:
+    put:
+      operationId: put_user_settings
+      tags:
+      - User
+      summary: Updates user settings.
+      x-source: https://docs.satellitevu.com/developers/api-reference/id/edit-user-settings
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /v1/{contractId}/collections:
+    get:
+      operationId: get_v1_contractId_collections
+      tags:
+      - Collections
+      summary: List STAC Collections available within the catalog.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/list-collections
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /v1/{contractId}/collections/{collectionId}:
+    get:
+      operationId: get_v1_contractId_collections_collectionId
+      tags:
+      - Collections
+      summary: Retrieves the generic metadata and attributes associated with a given Collection ID within the catalog.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/get-collection
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: collectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /v1/{contractId}/collections/{collectionId}/{itemId}:
+    get:
+      operationId: get_v1_contractId_collections_collectionId_itemId
+      tags:
+      - Collections
+      summary: Retrieves a specified imagery item from a Collection within the Catalog.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/get-item
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: collectionId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: itemId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /v1/{contractId}/queryables:
+    get:
+      operationId: get_v1_contractId_queryables
+      tags:
+      - Queryables
+      summary: List of queryables available for CQL2 filtering. Returns global properties for cross-collection searches.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/list-queryables
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+  /v1/{contractId}/search:
+    get:
+      operationId: get_v1_contractId_search
+      tags:
+      - Search
+      summary: Perform a search on the Catalog with your desired filters.
+      description: Results will be returned as a Feature Collection. Both GET and POST methods are supported for this request.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/search-text
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+    post:
+      operationId: post_v1_contractId_search
+      tags:
+      - Search
+      summary: Perform a search on the Catalog with your desired filters.
+      description: Results will be returned as a Feature Collection. Both GET and POST methods are supported for this request.
+      x-source: https://docs.satellitevu.com/developers/api-reference/catalog/search-json
+      parameters:
+      - name: contractId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Success (status as documented)
+      x-evidence:
+        kind: documentation
+components:
+  schemas:
+    PostContractidResponse:
+      type: object
+      properties:
+        '201':
+          type: string
+          description: Successful Response
+        '400':
+          type: string
+          description: Selected contract is not available for resellable orders
+        '402':
+          type: string
+          description: Insufficient credit available to fulfil order
+        '403':
+          type: string
+          description: Reseller end user error
+        '422':
+          type: string
+          description: Validation Error
+        '500':
+          type: string
+          description: Internal server error
+    PatchContractidOrderidResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Successful Response
+        '404':
+          type: string
+          description: Not Found
+        '422':
+          type: string
+          description: Validation Error
+    GetContractidTaskingOrdersResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Successful Response
+        '422':
+          type: string
+          description: Validation Error
+    PostContractidTaskingPriceResponse:
+      type: object
+      properties:
+        '200':
+          type: string
+          description: Successful Response
+        '400':
+          type: string
+          description: Invalid request.
+        '403':
+          type: string
+          description: Breach of contract terms and conditions.
+        '422':
+          type: string
+          description: Validation error (invalid request body) or invalid withhold/licence level option
+    PostContractidTaskingSeriesResponse:
+      type: object
+      properties:
+        '201':
+          type: string
+          description: Successful Response
+        '400':
+          type: string
+          description: Malformed request body
+        '402':
+          type: string
+          description: Insufficient credit available to make a reservation
+        '403':
+          type: string
+          description: Breach of contract terms and conditions / Reseller end user error
+        '422':
+          type: string
+          description: Validation error (invalid request body) or invalid withhold/licence level option
+        '500':
+          type: string
+          description: Internal server error
+        '503':
+          type: string
+          description: Ordering temporarily unavailable
+    PostCatalogV1ContractIdSearchRequest:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            type: string
+        intersects:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+    PostCatalogV3ContractIdSearchRequest:
+      type: object
+      properties:
+        datetime:
+          type: string
+          format: date-time
+        collections:
+          type: array
+          items:
+            type: string
+        intersects:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+            type:
+              type: string
+        limit:
+          type: integer
+    PostOauthTokenRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: number
+            type:
+              type: string
+        properties:
+          type: object
+          properties:
+            datetime:
+              type: string
+              format: date-time
+            satvu:day_night_mode:
+              type: string
+            max_cloud_cover:
+              type: integer
+            min_off_nadir:
+              type: integer
+            max_off_nadir:
+              type: integer
+    PostOrdersV3ContractIdRequest:
+      type: object
+      properties:
+        item_id:
+          type: array
+          items:
+            type: string
+        licence_level:
+          type: string
+        name:
+          type: string
+    GetOrdersV3ContractIdOrderIdItemIdDownloadResponse:
+      type: object
+      properties:
+        download_url:
+          type: string
+          description: Link to the zip archive containing the requested item
+    GetOrdersV3ContractIdOrderIdDownloadResponse:
+      type: object
+      properties:
+        download_url:
+          type: string
+          description: Link to the zip archive containing the ordered data
+    PostOrdersV3ContractIdPriceRequest:
+      type: object
+      properties:
+        item_id:
+          type: array
+          items:
+            type: string
+        licence_level:
+          type: string
+    PostOtmV2ContractIdSearchRequest:
+      type: object
+      properties:
+        collections:
+          type: array
+          items:
+            type: string
+        intersects:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: array
+                items:
+                  type: array
+                  items:
+                    type: number
+            type:
+              type: string
+    PostOtmV2ContractIdTaskingFeasibilitiesRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: number
+            type:
+              type: string
+        properties:
+          type: object
+          properties:
+            datetime:
+              type: string
+              format: date-time
+            product:
+              type: string
+    PostOtmV2ContractIdTaskingFeasibilitiesResponse:
+      type: object
+      properties:
+        type:
+          type: string
+        features:
+          type: array
+          items:
+            type: object
+            properties:
+              bbox:
+                type: array
+                items:
+                  type: number
+              type:
+                type: string
+              geometry:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  coordinates:
+                    type: array
+                    items:
+                      type: number
+              properties:
+                type: object
+                properties:
+                  datetime:
+                    type: string
+                    format: date-time
+                  product:
+                    type: string
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                  satvu:day_night_mode:
+                    type: string
+                  max_cloud_cover:
+                    type: integer
+                  min_off_nadir:
+                    type: number
+                  max_off_nadir:
+                    type: number
+                  min_gsd:
+                    type: number
+                  max_gsd:
+                    type: number
+                  min_sun_el:
+                    type: number
+                  max_sun_el:
+                    type: number
+              id:
+                type: string
+              signature:
+                type: string
+        id:
+          type: string
+        links:
+          type: array
+          items:
+            type: object
+            properties:
+              href:
+                type: string
+              rel:
+                type: string
+              method:
+                type: string
+              body:
+                type:
+                - string
+                - 'null'
+              merge:
+                type: boolean
+              type:
+                type: string
+              title:
+                type:
+                - string
+                - 'null'
+        status:
+          type: string
+        contract_id:
+          type: string
+    GetOtmV2ContractIdTaskingFeasibilitiesFeasibilityIdResponseR:
+      type: object
+      properties:
+        type:
+          type: string
+        features:
+          type: array
+          description: Array of Feature objects
+        id:
+          type: string
+        links:
+          type: array
+        status:
+          type: string
+        contract_id:
+          type: string
+    PostOtmV2ContractIdTaskingOrdersRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: number
+            type:
+              type: string
+        properties:
+          type: object
+          properties:
+            datetime:
+              type: string
+              format: date-time
+            satvu:day_night_mode:
+              type: string
+            max_cloud_cover:
+              type: integer
+            min_off_nadir:
+              type: integer
+            max_off_nadir:
+              type: integer
+            product:
+              type: string
+            licence_level:
+              type: string
+            addon:withhold:
+              type: string
+    PostOtmV2ContractIdTaskingOrdersOrderIdCancelRequest:
+      type: object
+      properties:
+        name:
+          type: string
+        total_order_count:
+          type: integer
+    GetOtmV2ContractIdTaskingOrdersOrderIdTasksResponse:
+      type: object
+      properties:
+        order_id:
+          type: string
+        tasks:
+          type: array
+          description: List of task objects with status and status_history.
+    PostOtmV2ContractIdTaskingPriceRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            coordinates:
+              type: array
+              items:
+                type: number
+            type:
+              type: string
+        properties:
+          type: object
+          properties:
+            datetime:
+              type: string
+              format: date-time
+            product:
+              type: string
+            licence_level:
+              type: string
+            addon:withhold:
+              type: string
+    PostOtmV2ContractIdTaskingSeriesRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: number
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
+            frequency:
+              type: string
+            start_date:
+              type: string
+              format: date-time
+            total_order_count:
+              type: integer
+            order_parameters:
+              type: object
+              properties:
+                satvu:day_night_mode:
+                  type: string
+                max_cloud_cover:
+                  type: integer
+                min_off_nadir:
+                  type: integer
+                max_off_nadir:
+                  type: integer
+                licence_level:
+                  type: string
+                addon:withhold:
+                  type: string
+    PostOtmV2ContractIdTaskingSeriesPriceRequest:
+      type: object
+      properties:
+        type:
+          type: string
+        geometry:
+          type: object
+          properties:
+            type:
+              type: string
+            coordinates:
+              type: array
+              items:
+                type: number
+        properties:
+          type: object
+          properties:
+            name:
+              type: string
+            frequency:
+              type: string
+            start_date:
+              type: string
+              format: date-time
+            total_order_count:
+              type: integer
+            order_parameters:
+              type: object
+              properties:
+                satvu:day_night_mode:
+                  type: string
+                max_cloud_cover:
+                  type: integer
+                min_off_nadir:
+                  type: integer
+                max_off_nadir:
+                  type: integer
+                licence_level:
+                  type: string
+                addon:withhold:
+                  type: string
+    PostPolicyV1ContractsRequest:
+      type: object
+      properties:
+        token:
+          type: string
+    PostPolicyV1ContractsResponse:
+      type: object
+      properties:
+        active:
+          type: boolean
+        addons:
+          type: array
+          items: {}
+        allowed_geographical_area:
+          type: object
+        contract_id:
+          type: string
+        end_date:
+          type: string
+          format: date
+        geographical_summary:
+          type: string
+        name:
+          type: string
+        products:
+          type: array
+          items:
+            type: object
+            properties:
+              code:
+                type: string
+              currency:
+                type: string
+        start_date:
+          type: string
+          format: date
+  securitySchemes:
+    bearer:
+      type: http
+      scheme: bearer
+security:
+- bearer: []
+tags:
+- name: Api
+- name: Catalog
+- name: Collections
+- name: Download
+- name: Oauth
+- name: Orders
+- name: Otm
+- name: Policy
+- name: Price
+- name: Queryables
+- name: Search
+- name: Tasking
+- name: User
